@@ -68,8 +68,47 @@ export const loginStyles = StyleSheet.create({
   },
   register_text: {
     fontWeight: "bold",
-    color: "#5E362E",
+    color: "#3FCD67",
     fontSize: 18,
+  },
+  button: {
+    width: "90%",
+    height: 50,
+    borderRadius: 20,
+    marginVertical: 20,
+    backgroundColor: "#3FCD67",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  forgotContainer: {
+    flexDirection: "row",
+    width: "80%",
+    justifyContent: "space-between",
+  },
+  forgotPass: {
+    backgroundColor: "transparent",
+  },
+  input_container: {
+    width: "90%",
+    height: 50,
+    paddingLeft: 10,
+    marginVertical: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 15,
+    backgroundColor: "white",
+  },
+  input: {
+    width: "80%",
+    height: 40,
+    padding: 10,
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "bold",
   },
 });
 

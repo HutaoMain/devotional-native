@@ -5,40 +5,25 @@ import {
   TextInput,
   StyleSheet,
   ImageBackground,
-  SafeAreaView,
 } from "react-native";
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { AuthStackNavigationType } from "../NavigationProps";
-// import DateTimePicker from "@react-native-community/datetimepicker";
-// import moment from "moment";
 import Toast from "react-native-toast-message";
-import axios from "axios";
-import { API_URL } from "../API_URL";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { registrationStyles, loginStyles } from "../Styles";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { FIREBASE_AUTH } from "../FirebaseConfig";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  // const [showDatePicker, setShowDatePicker] = useState<boolean>(false);
-  // const [date, setDate] = useState<Date>(new Date());
   const [loading, setLoading] = useState<boolean>(false);
 
-  // const onChangeSelectedDate = (selectedDate: any) => {
-  //   const formattedDate = new Date(selectedDate);
-  //   setShowDatePicker(false);
-  //   if (formattedDate) {
-  //     setDate(formattedDate);
-  //   }
-  // };
-
-  // const toggleDate = () => {
-  //   setShowDatePicker(true);
-  // };
+  const auth = FIREBASE_AUTH;
 
   const navigation =
     useNavigation<NativeStackNavigationProp<AuthStackNavigationType>>();
@@ -54,11 +39,7 @@ const Register = () => {
         return;
       }
 
-      await axios.post(`${API_URL}/api/user/register`, {
-        email: email,
-        name: name,
-        password: password,
-      });
+      await createUserWithEmailAndPassword(auth, email, password);
       Toast.show({
         type: "success",
         text1: `Successfully registered your account.`,
@@ -76,8 +57,6 @@ const Register = () => {
   const handleGoBackToLogin = () => {
     navigation.navigate("Login");
   };
-
-  // console.log(date);
 
   return (
     <View style={registrationStyles.registration}>
@@ -143,20 +122,6 @@ const Register = () => {
             secureTextEntry
           />
         </View>
-        {/* <View style={styles.input_container}>
-        <Text style={styles.input_label}>Birthday:</Text>
-        <TouchableOpacity style={styles.input} onPress={toggleDate}>
-          <Text>{moment(date).format("YYYY-MM-DD")}</Text>
-        </TouchableOpacity>
-      </View>
-      {showDatePicker && (
-        <DateTimePicker
-          display="spinner"
-          value={date}
-          mode="date"
-          onChange={(e) => onChangeSelectedDate(e.nativeEvent.timestamp)}
-        />
-      )} */}
         <TouchableOpacity
           style={[
             registrationStyles.button,

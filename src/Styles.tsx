@@ -126,7 +126,7 @@ export const registrationStyles = StyleSheet.create({
     marginVertical: 10,
   },
   buttonEnabled: {
-    backgroundColor: "#5E362E",
+    backgroundColor: "#3FCD67",
   },
   buttonDisabled: {
     backgroundColor: "#ccc",

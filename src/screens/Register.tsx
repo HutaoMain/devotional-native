@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { AuthStackNavigationType } from "../NavigationProps";
+import { AuthStackNavigationType } from "../types/NavigationProps";
 import Toast from "react-native-toast-message";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { registrationStyles, loginStyles } from "../Styles";

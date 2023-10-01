@@ -8,14 +8,17 @@ import {
 import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { AuthStackNavigationType } from "../NavigationProps";
+import { AuthStackNavigationType } from "../types/NavigationProps";
 import useAuthStore from "../zustand/AuthStore";
 import { AntDesign } from "@expo/vector-icons";
 import { Toast } from "react-native-toast-message/lib/src/Toast";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { loginStyles } from "../Styles";
 import { FIREBASE_AUTH } from "../FirebaseConfig";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 const Login = () => {
   const [email, setEmail] = useState<string>("");
@@ -42,6 +45,21 @@ const Login = () => {
         text1: `Email or password is incorrect.`,
       });
       console.log(error);
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      Toast.show({
+        type: "success",
+        text1: `Please check your email to reset your password.`,
+      });
+    } catch (error) {
+      Toast.show({
+        type: "error",
+        text1: `Not able to reset your password.`,
+      });
     }
   };
 
@@ -96,7 +114,10 @@ const Login = () => {
         </View>
         <View style={loginStyles.forgotContainer}>
           <Text></Text>
-          <TouchableOpacity style={loginStyles.forgotPass}>
+          <TouchableOpacity
+            style={loginStyles.forgotPass}
+            onPress={handleForgotPassword}
+          >
             <Text>Forgot password?</Text>
           </TouchableOpacity>
         </View>

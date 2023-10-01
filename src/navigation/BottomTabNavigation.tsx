@@ -1,8 +1,8 @@
 import { Ionicons, FontAwesome5, Entypo } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeStackNavigation from "./HomeStackNavigation";
-import Bible from "../screens/Bible";
 import Chat from "../screens/Chat";
+import Books from "../screens/Books";
 
 const BottomTabNavigation = () => {
   const Tab = createBottomTabNavigator();
@@ -17,7 +17,7 @@ const BottomTabNavigation = () => {
           if (route.name === "HomeStackNavigation") {
             iconName = focused ? "home" : "home-outline";
             Icon = Ionicons;
-          } else if (route.name === "Bible") {
+          } else if (route.name === "Books") {
             iconName = focused ? "bible" : "bible";
             Icon = FontAwesome5;
           } else if (route.name === "Chat") {
@@ -46,8 +46,8 @@ const BottomTabNavigation = () => {
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name="Bible"
-        component={Bible}
+        name="Books"
+        component={Books}
         options={{ headerShown: false }}
       />
       <Tab.Screen

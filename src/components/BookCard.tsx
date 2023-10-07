@@ -1,29 +1,24 @@
 import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
 import React from "react";
 import { BooksInterface } from "../types/Types";
-import { useIsFocused, useNavigation } from "@react-navigation/native";
-import { BooksStackProps } from "../types/NavigationProps";
+import { useNavigation } from "@react-navigation/native";
 
 interface Props {
-  books: BooksInterface;
+  books: string;
 }
 
 const BookCard = ({ books }: Props) => {
-  const navigation = useNavigation<BooksStackProps["navigation"]>();
+  const navigation = useNavigation<any>();
 
   const handleNavigate = () => {
-    navigation.navigate("Books", {
-      id: books.id,
-      bibleId: books.bibleId,
-      abbreviation: books.abbreviation,
-      name: books.name,
-      nameLong: books.nameLong,
+    navigation.navigate("Chapters", {
+      book_name: books,
     });
   };
 
   return (
     <TouchableOpacity style={styles.container} onPress={handleNavigate}>
-      <Text style={styles.title}>{books.name}</Text>
+      <Text style={styles.title}>{books}</Text>
     </TouchableOpacity>
   );
 };

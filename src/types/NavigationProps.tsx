@@ -2,21 +2,23 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 export type HomeNavigationStackProps = {
   Home: undefined;
-  Books: {
-    id: string;
-    bibleId: string;
-    abbreviation: string;
-    name: string;
-    nameLong: string;
-  };
+  Books: undefined;
   Chapters: {
-    id: string;
-    bibleId: string;
-    bookId: string;
-    number: string;
-    reference: string;
+    chapter: number;
+    verse: number;
+    text: string;
+    book_id: string;
+    book_name: string;
+    tags: string[];
   };
-  ChapterContent: undefined;
+  Verse: {
+    chapter: number;
+    verse: number;
+    text: string;
+    book_id: string;
+    book_name: string;
+    tags: string[];
+  };
 };
 
 // use for route in books
@@ -29,6 +31,11 @@ export type BooksStackProps = NativeStackScreenProps<
 export type ChaptersStackProps = NativeStackScreenProps<
   HomeNavigationStackProps,
   "Chapters"
+>;
+
+export type VerseStackProps = NativeStackScreenProps<
+  HomeNavigationStackProps,
+  "Verse"
 >;
 
 export type AuthStackNavigationType = {

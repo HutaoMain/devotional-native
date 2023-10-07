@@ -150,12 +150,14 @@ export const registrationStyles = StyleSheet.create({
 export const homeStyles = StyleSheet.create({
   home: {
     paddingHorizontal: 20,
+    paddingVertical: 20,
   },
   messageContainer: {
     backgroundColor: "#3FCD67",
     borderRadius: 20,
     width: "100%",
-    height: 180,
+    paddingVertical: 20,
+    paddingHorizontal: 0,
     justifyContent: "center",
     alignItems: "center",
   },

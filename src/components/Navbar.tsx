@@ -1,7 +1,10 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
+import UsersInitialAvatar from "./UsersInitialAvatar";
+import useAuthStore from "../zustand/AuthStore";
 
 const Navbar = () => {
+  const user = useAuthStore((state) => state.user);
   return (
     <View
       style={{
@@ -15,12 +18,9 @@ const Navbar = () => {
     >
       <View>
         <Text style={{ fontSize: 20 }}>Welcome,</Text>
-        <Text style={{ fontSize: 18, fontWeight: "bold" }}>Gabbi Garcia</Text>
+        <Text style={{ fontSize: 18, fontWeight: "bold" }}>{user}</Text>
       </View>
-      <Image
-        source={require("../../assets/images.jpg")}
-        style={{ width: 50, height: 50, borderRadius: 100 }}
-      />
+      <UsersInitialAvatar name={user || ""} />
     </View>
   );
 };

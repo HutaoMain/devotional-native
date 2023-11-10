@@ -4,7 +4,7 @@ import { HomeNavigationStackProps } from "../types/NavigationProps";
 import Home from "../screens/Home";
 import Books from "../screens/Books";
 import Chapters from "../screens/Chapters";
-import Verse from "../screens/Verse";
+import Verses from "../screens/Verses";
 // import Chapters from "../screens/Chapters";
 
 const HomeStackNavigation = () => {
@@ -27,11 +27,7 @@ const HomeStackNavigation = () => {
         component={Chapters}
         options={{ headerShown: false }}
       />
-      <HomeStack.Screen
-        name="Verse"
-        component={Verse}
-        options={{ headerShown: false }}
-      />
+      <HomeStack.Screen name="Verse" component={Verses} />
     </HomeStack.Navigator>
   );
 };

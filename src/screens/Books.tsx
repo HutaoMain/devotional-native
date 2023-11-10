@@ -4,7 +4,7 @@ import axios from "axios";
 import BookCard from "../components/BookCard";
 import { bibleAPIKey, bibleBaseAPIURL } from "../EnvironmentVariable";
 import { SafeAreaView } from "react-native-safe-area-context";
-import BookSkeleton from "../skeletons/BookSkeleton";
+import LoadingSpinner from "../loading/LoadingSpinner";
 
 const Books = () => {
   const [books, setBooks] = useState<string[]>([]);
@@ -28,7 +28,7 @@ const Books = () => {
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView style={{ flex: 1 }}>
         {loading ? (
-          <BookSkeleton />
+          <LoadingSpinner />
         ) : (
           books?.map((book, key) => <BookCard key={key} books={book} />)
         )}

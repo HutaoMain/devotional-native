@@ -42,16 +42,29 @@ const Verses = ({ route, navigation }: VerseStackProps) => {
     <ScrollView style={{ flex: 1 }}>
       {!loading ? (
         <>
-          {chapterVerses?.map((item) => (
-            <>
-              <Text>{item?.book_name}</Text>
-              <Text>Chapter {item?.chapter}</Text>
-              <View>
-                <Text>Verse {item?.verse} </Text>
-                <Text>{item?.text}</Text>
-              </View>
-            </>
-          ))}
+          <View
+            style={{
+              width: "100%",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Text style={{ fontSize: 20 }}>{book_name}</Text>
+            <Text style={{ fontSize: 30 }}>{chapter}</Text>
+          </View>
+
+          <View style={{ paddingHorizontal: 10 }}>
+            <Text>
+              {chapterVerses?.map((item, key) => (
+                <Text key={key}>
+                  <Text style={{ fontSize: 10, color: "gray" }}>
+                    {item?.verse}{" "}
+                  </Text>
+                  <Text style={{ fontSize: 16 }}>{item?.text} </Text>
+                </Text>
+              ))}
+            </Text>
+          </View>
         </>
       ) : (
         <LoadingSpinner />

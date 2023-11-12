@@ -24,3 +24,10 @@ export interface DailyMessageInterface {
   book_name: string;
   tags: string[];
 }
+
+export interface BookMarkInterface {
+  bookName: string;
+  chapter: number;
+  verseNumber: number;
+  verseText: string;
+}

@@ -11,7 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -19,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.alialcantara25.devotionalbuddy"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -30,11 +33,15 @@
         {
           "photosPermission": "custom photos permission",
           "cameraPermission": "Allow Devotional Buddy to open the camera",
-
           "//": "Disables the microphone permission",
           "microphonePermission": false
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "30612ddb-b8d9-4f25-80dc-777b7c9a143d"
+      }
+    }
   }
 }
